@@ -18,7 +18,7 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
  * the methods to add functionality. Consider using 'super' where appropriate to concatenate
  * behavior.
  */
-contract Crowdsale is Context, ReentrancyGuard {
+contract Crowdsale is Context {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
@@ -70,12 +70,12 @@ contract Crowdsale is Context, ReentrancyGuard {
      * of 2300, which is not enough to call buyTokens. Consider calling
      * buyTokens directly when purchasing tokens from a contract.
      */
-    function () external payable {
-        buyTokens(_msgSender());
-    }
-    // receive () external payable {
+    // function () external payable {
     //     buyTokens(_msgSender());
     // }
+    receive () external payable { 
+        buyTokens(_msgSender());
+    }
 
     /**
      * @return the token being sold.
@@ -111,7 +111,7 @@ contract Crowdsale is Context, ReentrancyGuard {
      * another `nonReentrant` function.
      * @param beneficiary Recipient of the token purchase
      */
-    function buyTokens(address beneficiary) public nonReentrant payable {
+    function buyTokens(address beneficiary) public payable {
         uint256 weiAmount = msg.value;
         _preValidatePurchase(beneficiary, weiAmount);
 

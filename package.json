@@ -16,6 +16,7 @@
     "@openzeppelin/contracts": "^4.2.0",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
-    "chai-bn": "^0.3.0"
+    "chai-bn": "^0.3.0",
+    "openzeppelin-solidity": "^4.2.0"
   }
 }
